@@ -1,0 +1,237 @@
+day67
+웹개발4 14일차(vue.js 3일차)
+모듈 -> 비동기 -> Vue 프레임워크 -> 컴포넌트 -> 프로젝트 구성 -> ESLint, Prettier
+
+1. 모듈(Module)
+   모듈 : 독립성을 가진 재사용 가능한 코드블록을 의미
+   export, import 키워드를 사용한다
+   ES6 모듈을 파일 자체의 스코프를 만들어서 독자적인 모듈 스코프를 갖는다
+   모듈 내에서 var 키워드로 선언한 변수는 전역변수도 아니고 window 객체의 프로퍼티도 아니다
+
+1) js 확장자와 mjs확장자의 차이
+   javascript 파일의 확장자는 .js
+   모듈을 다룰 때 사용하는 파일 확장자는 .mjs
+
+- 모듈 지원
+   js : CommonJS나 AMD 같은 이전의 모듈 시스템을 사용
+   mjs : ECMAScript 모듈 시스템을 사용
+
+- 스크립트 형식
+   js : 기본적으로 스크립트 형식으로 해석
+   mjs : 모듈 형식으로 해석
+
+- import/export문 사용
+   js : require, module.exports와 같은 CommonJS 스타일의 모듈 시스템 사용
+   mjs : import/export문을 사용하여 ECMAScript 모듈을 정의
+
+- Node.js 지원
+   js : js파일 지원
+   mjs : Node.js 13.2.x 버전부터 지원
+=> 모듈 사용 시에는 .mjs 확장자를 사용하는 것이 좋다
+
+2) export 키워드
+   독자적인 모듈 스코프를 갖기 때문에 모듈안에 선언한 모든 식별자는 기본적으로 해당 모듈에서만 참조가 가능하다
+   모듈안에 선언한 식별자를 외부에 공개하여 다른 모듈들이 참조할 수 있게 하고 싶다면 export 키워드를 사용한다
+   ex) export const p = "hello";
+
+3) import 키워드
+   모듈에서 export한 대상을 로드하기 위해서 사용한다
+   모듈이 export한 식별자로 import하며 ES6 모듈의 파일 확장자는 생략할 수 없다
+
+   ex) import 변수, 함수, 클래스명 from './파일명.확장자'
+
+2. 비동기처리
+1) 동기와 비동기
+  동기적인 코드는 순차적으로 실핸된다
+  코드가 실행되는 순서가 중요하다
+  ex) 함수호출
+
+  비동기는 코드가 순차적으로 실행되지 않는다
+  작업이 완료되는 것을 기다리지 않고 다른 작업을 동시에 수행할 수 있다
+  코드의 실행이 순서에 의존하지 않는다
+  ex) 네트워크 요청, 파일 다운로드, 타이머함수, 이벤트처리
+
+2) 자바스크립트의 비동기 처리 방법
+  콜백함수, Promise, async/await 등
+
+3. 프록시(Proxy)
+  객체의 속성을 읽어오거나 설정하는 작업을 가로채기 위해 래핑할 수 있도록 하는 객체
+  객체의 속성에 접근할 때 내가 원하는 지정된 작업을 수행하도록 할 수 있다
+
+  MVVM 아키텍처 Model의 데이터가 업데이트 되면 ViewModel에게 알림 전송을 수행하는 부분을 볼 수 있다
+  Vue3에서는 Model내부의 객체 속성 변경 시 알림 전송을 수행하기 위해 Proxy를 이용한다
+
+4. Vue 프레임워크
+  UI(User Interface)개발을 위한 자바스크립트 프레임 워크
+  HTML, CSS, Javascript 를 기반으로 단순하거나복잡한 사용자 인터페이스 (UI)를 효율적으로 개발할 수 있다
+
+  Vue 인스턴스에 데이터를 바인딩하고 HTML 요소에 v-접두사로 시작하는 디렉티브를 속성으로 추가하여
+  DOM요소와 데이터를 연결한다
+
+  데이터바인딩(Data Binding) : Vue 인스턴스의 데이터를 html요소에 연결하는 것을 의미
+  디렉티브(Directive) : HTML요소에 특정한 동작을 적용할 때 사용하는  Vue.js 표기법
+  선언적랜더링(Declarative Randering) : Vue는 템플릿구문{{데이터}} 을 활용하여
+    데이터를 선언적으로 출력(렌더링)할수있다
+  반응성(Reactivity) : Vue는 javascript의 상태 변경을 자동으로 추적하고
+    변경이 발생하면 DOM을 효율적으로 업데이트한다
+  
+  MVVM 패턴
+  View(뷰) : UI를 표현
+  View Model(뷰 모델) : 데이터와 비지니스 로직을 담당(상태와 연산)
+    뷰에 대한 상태와 동작을 정의하고 모델과의 데이터 바인딩을 처리
+    사용자 입력에 대한 이벤트 처리와 명령을 실행
+  Model(모델) : 도메인 특화 데이터 
+    뷰 모델에서 모델로 업데이트, 모델에서 뷰로 알림 전송
+
+5. 컴포넌트(Component)
+  자바스크립트에서 재사용할 수 있도록 코드를 분리한 파일 -> 모듈
+  UI(HTML, CSS, JS)를 재사용할 수 있도록 정의한 것 -> 컴포넌트
+
+1) 컴포넌트를 사용하는 이유
+  UI를 재사용할 수 있다
+  UI를 독립적으로 나눔으로써 코드를 클린하게 할 수 있다
+
+2) 컴포넌트 생성
+  컴포넌트 정의 -> 컴포넌트 등록 -> 컴포넌트 사용
+
+3) 컴포넌트 정의
+① 문자열 템플릿(String Template)
+  Vue 컴포넌트를 Javascript 객체 안에 정의할 때 사용
+  template 속성을 사용하여 HTML을 문자열로 정의한다
+  백틱을 사용하여 여러줄의 HTML을 작성할 수 있다
+  주로 간단한 컴포넌트나 프로토타이핑을 할 때 사용한다
+
+② Single File Component(단일 파일 컴포넌트, SFC)
+  .vue 확장자를 가진 파일 안에 HTML, CSS, Javascript를 포함한 컴포넌트를 정의
+  <template>, <script>, <style> 섹션을 사용하여 각각 HTML, CSS, JS작성한다
+  파일 당 하나의 컴포넌트를 정의하며 각 섹션의 각각의 역할에 따라 분리되어 있어 가독성이 좋다
+  대규모 프로젝트에서 주로 사용된다
+
+4) 컴포넌트 등록
+ 전역등록(Global Registration)
+    전역등록.component()메소드를 사용하여 컴포넌트를 전역으로 등록하는 것을 의미
+    어플리케이션의 어느 곳에서든지 해당 컴포넌트를 사용할 수 있게 한다
+    앱 로드 시점에서 미리 등록하기 때문에 앱의 규모가 커질 수록 성능에 영향을 줄 수 있다
+    빌드 시스템을 사용하는 경우, 사용하지 않는 컴포넌트도 불필요하게 번들링되어 앱의 용량을 증가시킬 수 있다
+    * 번들링 : 웹개발에서 여러개의 파일을 하나로 합치는 과정을 의미한다
+
+    ex)
+    const app = createApp({})
+    app.component('BoxComponent', BoxComponent)
+
+② 지역등록(Local Registration)
+    컴포넌트를 필요한 곳에서만 등록하는 방법
+    즉, 해당 컴포넌트를 사용하는 컴포넌트 옵션의 components 속성안에 등록한다
+    전역등록과는 달리 컴포넌트를 필요한 곳에서만 사용하기 때문에 앱의 용량을 줄일 수 있다
+    빌드 시스템을 이용하는 경우 사용하지 않는 컴포넌트가 번들링되는 것을 방지할 수 있다
+
+    ex)
+    const app = createApp({
+      components:{
+        Boxcomponent : BoxComponent
+      }
+    })
+
+5) 컴포넌트 사용
+  컴포넌트 template 에서 사용할 수 있다
+  Vue.js 에서 컴포넌트를 등록할 때 컴포넌트 네이밍 룰(이름 표기법)
+
+① 파스칼케이스(PascalCase)
+  첫글자를 대문자로 쓰고 단어들을 연결할 때 첫 문자를 대문자로 작성하는 방법
+  BoxComponent
+
+② kebab-case
+  모든 문자를 소문자로 쓰고 단어들을 -(하이픈)으로 연결하는 방식
+  box-component
+
+6) 컴포넌트 시스템
+  작은 의미 : 재사용 가능한 컴포넌트
+  넒은 의미 : 모든 Vue 인스턴스는 컴포넌트
+  => Vue는 컴포넌트로 구성된 어플리케이션이다
+
+6. 프로젝트 구성
+1) Vue 설치 방법
+  - CDN 패키지로 import 하기
+  - npm 사용하여 import 하기
+  - 공식 CLI를 사용하여 프로젝트를 scaffold 하기
+
+2) CDN
+  프로토타이핑, 학습 목적으로 사용 시 최신 버전으로 사용할 수 있다
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  최신버전
+    <script src="https://unbpkg.com/vue@next"></script>
+    <script src="https://unbpkg.com/vue@3.2.31"></script>
+
+3) npm
+  Vue를 사용하여 대규모 어플리케이션을 구축할 떄 NPM을 이용한 설치를 권장한다
+
+  npm install vue@next
+
+4) Vue CLI
+  Vue CLI는 웹팩 기반 빌드도구이다
+  유지관리모드 @vue/cli v4.5이상의 버전 설치가 필요하다
+  특정 웹팩 기능에 의존하지 않는 한 Vite로 새 프로젝트를 시작하는 것이 좋다
+
+5) Vite(비트)
+  Vue SFC(Single File Component)를 지원하고 가볍고 빠른 빌드 도구이다
+  개발 서버를 구동할 때 매우빠르고 소스코드의 변경이 일어났을 때 전체 모듈을 번들링하는 것이 아닌
+  변경된 모듈만 교체하기 때문에 빠르게 진행할 수 있다
+
+//플러그인
+// https://eslint.vuejs.org/rules/#priority-a-essential-error-prevention-for-vue-js-3-x
+//eslint rules
+//https://eslint.org/docs/latest/rules/
+
+7. 프로젝트 구조
+
+├── node_modules
+│      └── ...
+├── public
+│   └── favicon.ico
+├── src
+│   ├── App.vue
+│   ├── assets
+│   │   ├── base.css
+│   │   └── logo.svg
+│   ├── components
+│   │   ├── HelloWorld.vue
+│   │   ├── TheWelcome.vue
+│   │   ├── WelcomeItem.vue
+│   │   └── icons
+│   │       ├── IconCommunity.vue
+│   │       ├── IconDocumentation.vue
+│   │       ├── IconEcosystem.vue
+│   │       ├── IconSupport.vue
+│   │       └── IconTooling.vue
+│   └── main.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js
+
+
+1)  vite.config.js
+   vite 설정파일
+   vite 명령어로 dev 서버를 실행할 때 프로젝트 루트의 vite.config.js 파일을
+   확인하게 된다. 이 안에 설정된 값들을 참고해서 만들어준다.
+   
+   alias : @는 뒤에 있는 경로로 설정하겠다는 의미
+      파일 시스템의 경로에 별칭을 만들 때 사용한다
+   @ : './src' 디렉토리에 절대경로로 쉽게 접근할 수 있다
+
+
+2) package.json
+   npm으로 관리하기 위한 프로젝트 정보를 갖고있는 파일
+   의존된 모듈이 자동으로 설치되어있고, 프로젝트에서 자주 사용하는 명령어를
+   스크립트 안에 설정한 것을 볼 수 있다
+
+3) node_moudles : 의존된 모듈들이 설치된 디렉터리
+
+4) public : 정적인 자산이 포함된 디렉터리
+   favicon.ico : 정적인 리소스가 있다(아이콘)
+
+5) src 
+   assets : 웹팩이나 비트등의 빌드도구의 영향을 받는 이미지나 css 등
+      정적자산이 있는 디렉터리
+   App.vue : 루트 컴포넌트
