@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model 디렉티브2</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="message" placeholder="값을 입력하세요" />
+    <h1>{{ message }}</h1>
+
+    <div>
+      <label>
+        <input type="radio" v-model="picked" value="사과" />사과
+      </label>
+      <label>
+        <input type="radio" v-model="picked" value="복숭아" />복숭아
+      </label>
+      <label>
+        <input type="radio" v-model="picked" value="포도" />포도
+      </label>
+      <h1>{{ picked }}</h1>
+    </div>
+
+    <div>
+      <label>
+        <input type="checkbox" v-model="checked" value="한국" /> 한국
+        <input type="checkbox" v-model="checked" value="미국" /> 미국
+      </label>
+    </div>
+    <h1>{{ checked }}</h1>
+  </div>
+
+  <script>
+      const app = Vue.createApp({
+      data(){
+        return{
+          message:"vue 수업",
+          picked:'',
+          checked:[]
+        };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>component</title>
+  <link rel="stylesheet" href="./component01.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>header</h1>
+    </header>
+    <nav-component></nav-component>
+    <!-- <nav>
+      <ul>
+        <li>
+          <a href="">메뉴1</a>
+          <a href="">메뉴2</a>
+          <a href="">메뉴3</a>
+          <a href="">메뉴4</a>
+        </li>
+      </ul>
+    </nav> -->
+    <main>
+      <section>
+        <box-component></box-component>
+        <box-component></box-component>
+        <box-component></box-component>
+        <!-- <article class="box">
+          <div class="box_sub">box</div>
+          <div class="box_title">vue</div>
+        </article>
+        <article class="box">
+          <div class="box_sub">box</div>
+          <div class="box_title">vue</div>
+        </article>
+        <article class="box">
+          <div class="box_sub">box</div>
+          <div class="box_title">vue</div>
+        </article> -->
+      </section>
+    </main>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      components:{
+          BoxComponent : {
+            template: `
+            <article class="box">
+              <div class="box_sub">box</div>
+              <div class="box_title">vue</div>
+            </article>`
+          },
+          NavComponent :{
+            template:`
+            <nav>
+              <ul>
+                <li>
+                  <a href="">메뉴1</a>
+                  <a href="">메뉴2</a>
+                  <a href="">메뉴3</a>
+                  <a href="">메뉴4</a>
+                </li>
+              </ul>
+            </nav>
+            `
+          },
+        
+      }
+    }).mount("#app")
+  </script>
+</body>
+</html>

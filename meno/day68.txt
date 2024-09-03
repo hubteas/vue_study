@@ -145,7 +145,7 @@ ESLint, Prettier -> OptionAPI, CompositionAPI -> CompositionAPI -> Setup hook ->
 
   - 반응형 데이터 정의 : ref, reactive 를 사용하여 반응형 상태 정의
   - 컴포넌트의 초기 설정 : 컴포넌트에서 사용할 상태 (state), 메소드(methods), 속성(computed properties)등
-  - 라이프사이클 훅 사용 :  setup(내부에서 CompositionAPI 전용 라이프 사이클 훅을 사용 가능
+  - 라이프사이클 훅 사용 : setup(내부에서 CompositionAPI 전용 라이프 사이클 훅을 사용 가능
 
 2) beforeCreate
   Vue 인스턴스가 생성되기 전 호출된다

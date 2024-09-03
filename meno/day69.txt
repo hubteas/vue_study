@@ -1,0 +1,87 @@
+day69
+웹개발4 16일차(vue.js 5일차)
+만족도 평가 -> 이벤트 -> 양방향바인딩 -> 컴포넌트
+
+1. 이벤트
+  이벤트처리는 v-on 디렉티브로 사용한다
+  @ 단축표현으로도 많이 사용된다
+
+1) 메소드 이벤트 핸들러
+  v-on 디렉티브에서 메소드를 호출할 수 있고 매개변수로는 event 객체를 받는다
+
+2) 이벤트 수식어(modifiers)
+  이벤트 조작시 이벤트 내부에서 event.preventDefault()나 event.stopPropagation() 메소드를 호출가능하다
+
+  .stop
+    e.stopPropagation()
+  .prevent
+    e.preventDefault()
+  .capture
+    캡쳐 모드를 사용할 떄 이벤트 리스너를 사용 가능하다
+  .self
+    자기 자신만 호출 할 수있다
+  .once
+    한번만 실행된다
+  .passive
+    일반적으로 모바일 장치의 성능을 개선하기 위해 터치 이벤트 리스너와 함께 사용된다
+
+3) 키 수식어
+  v-on 디렉티브를 사용하거나 @디렉티브에 키 수식어를 사용한다
+  .enter
+    enter 키를 눌렀을 때만 이벤트가 발생한다
+  .tab
+    tab키를 눌렀을 때만 이벤트 발생
+  .delete
+    delete키, backspace 키를 눌렀을 때 이벤트 발생
+  .up, .down, .left, .right
+    화살표 방향키를 눌렀을때 이벤트 발생
+  .space
+    space bar를 눌렀을 때 이벤트 발생
+  .esc
+    esc 키를 눌렀을 때 이벤트 발생
+
+4) 시스템 키 수식어
+  .ctrl
+  .alt
+  .shift
+  .meta
+
+2. 양방향 바인딩(Two-way Data Binding)
+  데이터 모델이 변경되면 UI가 자동으로 업데이트 되고
+  UI에서 사용자가 입력한 내용이 즉시 데이터 모델에 반영된다
+  v-model 디렉티브를 사용하여 구현한다
+  폼 입력요소(input, textarea, select 등)와 데이터 모델간의 양방향 바인딩을 처리한다
+
+3. 컴포넌트
+  컴포넌트 정의하는 방법에는 2가지가 있다
+  (1) Single-File Component(SFC) -> 빌드도구를 사용할 때 정의할 수 있다
+    .vue 를 가진 단일 파일이다
+  (2) 문자열 템플릿(String Template)
+     vue 옵션을 포함하는 일반 javascript 객체로 정의할 수 있다
+
+4. Single-File Component(SFC)
+  Vue에서 Single-File Component(SFC , *.vue파일)는 Vue 컴포넌트의 템플릿(template),
+  로직(script), 스타일(style)을 하나의 파일로 캡슐화하는 특수 파일 형식이다
+
+  <template>
+    *.vue 파일은 한 번에 최대 하나의 <template> 블록을 포함할 수 있다
+  
+  <script>
+    *.vue 파일은 최대 하나의 <script> 블록을 포함할 수 있다
+    <script setup> 제외
+    ES 모듈로 실행되고 default export 는 일반 객체나 defineComponent의 반환값으로
+    Vue 컴포넌트 옵션 객체여야 한다
+  <script setup>
+    각 *.vue 파일은 한번에 최대 하나의 <script setup> 블록을 포함할 수 있다
+    사전에 처리되어 컴포넌트의 setup()함수로 사용된다
+    컴포넌트의 각 인스턴스에 대해 실행된다
+    <script setup>의 최상위 바인딩은 템플릿에 자동으로 노출된다
+  <style>
+    단일 *.vue 파일에는 여러<style> 태그가 포함될 수 있다
+    현재 컴포넌트에 스타일을 캡슐화하는데 도움되도록 scoped 나 module 속성을 가질 수 있다
+    캡슐화 모드가 다른 여러 <style>태그를 동일한 구성요소에서 혼합할 수 있다
+    https://vuejs.org/api/sfc-css-features.html
+
+
+
+  
