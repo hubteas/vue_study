@@ -1,0 +1,61 @@
+day69
+웹개발4 17일차(vue.js 6일차)
+컴포넌트 네비바 코드작성 -> Props -> 이벤트 -> Slots
+
+1. Props
+  컴포넌트에 등록할 수 있는 사용자 정의 속성
+  게시글이 있을 때 게시글 컴포넌트에 사용자 정의 속성을 선언하면
+  이 컴포넌트를 사용하는 부모 컴포넌트에서 데이터(속성)을 전달할 수 있다
+
+1) Props 선언
+  Vue 컴포넌트에는 명시적 props 선언이 필요하다
+  컴포넌트에 전달된 외부 props가 fallthrough 속성으로 처리되어야 하기 때문이다
+  fallthrough 속성 : props 또는 emits에 명시적으로 선언되지 않은 속성이나 이벤트
+
+  - 문자열 배열 선언
+  export default{
+    props:['title'],
+    setup(props){
+      console.log(props.title)
+    },
+  }
+
+  - 객체 문법 선언
+  key는 속성명, value는 속성 타입이다
+  export default{
+    props:{
+      title:String,
+      likes:Number,
+    },
+    setup(props){
+      console.log(props.title)
+      console.log(props.likes)
+    }
+  }
+
+2) Props 사용
+  선언된 props를 <template>에서 바로 사용 가능하다
+  <template>
+    <p>{{title}}</p>
+  </template>
+
+  setup() 함수의 첫번째 매개변수로  props객체를 받아서 사용 가능하다
+  export default{
+    setup(props){
+      return {};
+    },
+  };
+
+- 컴포넌트 인스턴스(this) 의 $props 객체로 접근할 수 있다(Options API)
+  <template>
+    <p>{{$props}}</p>
+  </template>
+  <script>
+  export default{
+    created(){
+      //객체로 접근
+      this.$props
+      this.title
+    },
+  };
+  </script>
