@@ -6,14 +6,13 @@
 </template>
 
 <!-- <script>
-export default{
+export default {
   data(){
-    return{
+    return {
       post:{
         id:1,
-        title:"첫번째게시물",
-        content:"vue게시판의 펏번째 게시물입니다",
-        
+        title:"첫번째 게시물",
+        content :"vue 게시판의 첫번째 게시물입니다.",
       },
     };
   },
@@ -24,16 +23,16 @@ export default{
   props:{
     post:{
       type:Object,
-      required: true,
+      required :true,
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .post-detail{
-  padding: 20px;
-  border: 1px solid black;
+  padding:20px;
+  border :  1px solid black;
   margin : 20px;
 }
 </style>

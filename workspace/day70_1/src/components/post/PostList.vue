@@ -66,24 +66,3 @@ export default {
   color: red;
 }
 </style>
-
-
-<style scoped>
-.post-list ul{
-  list-style-type: none;
-  padding: 0;
-}
-
-.post-list ul li{
-  margin-bottom: 10px;
-}
-
-.post-list ul li a{
-  color: #333;
-  text-decoration: none;
-}
-
-.post-list li a:hover{
-  color : red;
-}
-</style>

@@ -5,17 +5,16 @@
 </template>
 
 <script>
-  export default{
-
-  };
+export default {};
 </script>
 
 <style scoped>
-  .footer{
-    background-color: #333;
-    color:white;
-    padding: 20px;
-    text-align: center;
-    font-size: 20px;
-  }
+.footer{
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+}
+
 </style>

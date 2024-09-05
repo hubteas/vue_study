@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <h1>Vue 게시판</h1>
-    <AppNav/>
+    <AppNav />
   </header>
 </template>
 
