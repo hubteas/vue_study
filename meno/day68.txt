@@ -194,7 +194,7 @@ ESLint, Prettier -> OptionAPI, CompositionAPI -> CompositionAPI -> Setup hook ->
   이중 중괄호는 html 속성에 사용할 수 없다
   v-bind 디렉티브로 사용할 수 있다
   ex) <div v-bind:title="onMouse"> 마우스를 올려보세요</div>
-      <input type="text v-bindLdisabled="idInputDisabled"/>
+      <input type="text v-bind:disabled="idInputDisabled"/>
 
 
   ex) 속성 바인딩 단축 표현

@@ -1,0 +1,37 @@
+<!-- <template>
+  <div>
+    <h1>이벤트발생</h1>
+    <MyButton @large-text="increaseFontSize" @small-text="decreaseFontSize"/>
+    <p :style="{fontSize: fontSize +'px'}">폰트크기 조절</p>
+  </div>
+</template>
+
+<script>
+import { ref } from 'vue';
+import MyButton from './components/MyButton.vue';
+
+export default{
+  components:{MyButton},
+  setup(){
+    const fontSize = ref(20);
+    const increaseFontSize = ()=>{
+      fontSize.value += 2;
+    };
+
+    const decreaseFontSize = ()=>{
+      if(fontSize.value>10){
+        fontSize.value -= 2;
+      };
+    };
+    return {fontSize, increaseFontSize, decreaseFontSize};
+  },
+
+};
+</script>
+
+
+<style>
+p{
+  transition: font-size 0.2 ease;
+}
+</style> -->
