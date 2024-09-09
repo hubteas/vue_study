@@ -1,0 +1,136 @@
+day71
+웹개발4 18일차(vue.js 7일차)
+Events -> Non-Prop 속성 -> Slots -> 라우터
+
+1. Events
+	자식 컴포넌트에서도 부모 컴포넌트로 데이터를 전달하거나 트리거의
+	목적으로 이벤트를 내보내는 것을 의미한다
+	이벤트는 컴포넌트의 emit 메소드를 통해 발생시킬 수 있다
+
+1) 이벤트 발생 및 수신
+	컴포넌트의 <template> 블록안에서 내장함수 $emit()을 사용하여 직접 커스텀한 이벤트를 내보낼 수 있다
+	부모 컴포넌트에서 v-on(@)을 사용하여 이벤트를 받을 수 있다
+	.once 수식어는 컴포넌트 커스텀 이벤트에서도 지원된다
+
+2) 이벤트 파라미터
+	이벤트와 함께 특정 값을 내보낼 수 있다 $emit에 매개변수를 넘겨서 사용한다
+
+3) 이벤트 선언하기
+	emits옵션을 사용하여 이벤트를 선언할 수 있다
+	javascript 코드에서 이벤트를 내보낼때는 setup()함수의 매개변수로 넘어온 context.emit()메소드를 사용할 수 있다
+	- 문자열 배열 선언
+	
+	export default{
+		emits:['myEvent'].
+		setup(props, context){
+			context.emit('myEvent', 'hello')
+		}
+	}
+
+	export default{
+		emits:['myEvent'].
+		setup(props, { emit }){
+			emit('myEvent', 'hello')
+		}
+	}
+
+	- 객체 문법 선언
+	객체 문법으로 선언시에는 validation 로직을 추가할 수 있고 validation이 없다면 null로 설정한다
+
+	export default{
+		emits: {
+			myEvent: null,
+
+			mySubmit: (result) =>{
+				if(email && password){
+					return true
+				}else{
+					cosole.warn('result 값이 비어있습니다!!')
+					return false
+				}
+			}
+		},
+		setup(props, context){
+			context.emit('myEvent', 'hello')
+		}
+	}
+	
+2. Non-Prop 속성(fallthrough 속성)
+	props나 event에 명시적으로 선언되지 않은 속성 또는 이벤트이다
+	class, style, id등이 포함된다
+
+1) 속성 상속
+	컴포넌트가 단일 루트 요소로 구성되어있다면 Non-Prop 속성은 루트 요소의 속성에 자동으로 추가된다
+	
+	<MyButton> 컴포넌트가 있으면
+		<button>클릭</button>
+	이 컴포넌트를 사용하는 부모 컴포넌트는
+	<MyButton class='large'></MyButton>
+	최종 렌더링된 DOM은
+	<button class='large'>클릭</button>
+
+2) class, style 속성 병합
+	자식 컴포넌트 루트요소에 이미 class와 style 속성이 정의되어있다면 부모로 받은 class와 style 속성과 병합된다
+	
+	<button class='btn'>클릭</button>
+	
+	<button class='btn large'>클릭</button>
+
+3) 속성 상속 비활성화
+	컴포넌트가 자동으로 Non-Prop 속성을 상속하지 않도록 하려면 컴포넌트의 inheritAttrs:false옵션을 설정가능하다
+
+	<template>
+		<button class='btn' data-link='myBtn'>클릭</button>
+	</template>
+
+	<script>
+	export default {
+		inheritAttrs:false,
+	};
+	</script>
+----------------------------------------------
+	<template>
+		<p>Non-Prop 속성 : {{ $attrs }}</p>
+	</template>
+
+3. Slots
+	<slot>요소는 부모 컴포넌트에서 제공하는 컨텐츠를 나타내는 슬롯 컨텐츠이다
+	
+4. Vue Router
+	Vue.js를 이용하여 싱글페이지 어플리케이션을 구현할 때 사용하는 Vue.js 공식 라우터
+	
+1) 라우터(Router)
+	일반적인 라우터는 네트워크간에 데이터를 전송하는 장치를 의미
+	Vue.js의 라우터는 URL에 따라 어떤 페이지를 보여줄 지 매핑해주는 라이브러리 
+	라우트 : Url에 어떤 페이지를 표시해야하는지에 대한 정보
+
+2) 라우터 설치
+	npm install vue-router
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
